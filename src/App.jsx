@@ -5,7 +5,15 @@ import Contact from './Contact'
 import ProjectPage from './ProjectPage'
 import './App.css'
 
-
+function NotFound() {
+  return (
+    <main className="contact">
+      <h1 className="contact-title">Page not found</h1>
+      <p className="hero-line">That page does not exist.</p>
+      <Link className="btn" to="/">Back home</Link>
+    </main>
+  )
+}
 
 export default function App() {
   return (
@@ -14,9 +22,9 @@ export default function App() {
         <div className="header-inner">
           <Link className="header-name" to="/" state={{ scrollTo: 'top' }}>Brandon Cordero</Link>
           <nav className="nav">
-            <Link to="/" state={{ scrollTo: 'skills' }}>Skills</Link>
-            <Link to="/" state={{ scrollTo: 'experience' }}>Experience</Link>
             <Link to="/" state={{ scrollTo: 'projects' }}>Projects</Link>
+            <Link to="/" state={{ scrollTo: 'experience' }}>Experience</Link>
+            <Link to="/" state={{ scrollTo: 'skills' }}>Skills</Link>
             <Link to="/contact">Contact</Link>
             <Link className="btn" to="/resume">Resume</Link>
           </nav>
@@ -29,6 +37,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/projects/:slug" element={<ProjectPage />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <footer className="footer">

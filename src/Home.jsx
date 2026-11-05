@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { GitHubCalendar } from 'react-github-calendar'
+//import { GitHubCalendar } from 'react-github-calendar'
 import { skills, projects, achievements, highlights } from './data'
 import { Pill, Media } from './components'
 
@@ -205,57 +205,13 @@ export default function Home() {
         </div>
       </section>
 
-      <Section id="skills" num="01" title="Skills">
-        <div className="terminal">
-          <div className="terminal-bar">
-            <span className="prompt">$</span>
-            <span className="terminal-path">ls ~/skills</span>
-          </div>
-          <div className="cats">
-            {categories.map((cat) => (
-              <div className="cat" key={cat.name} style={{ '--cc': cat.color }}>
-                <h3 className="cat-name"><Icon name={cat.icon} />{cat.name}</h3>
-                <div className="tags">
-                  {Object.entries(skills)
-                    .filter(([, s]) => s.category === cat.name)
-                    .map(([id]) => <Pill key={id} id={id} href={`#/skills/${id}`} />)}
-                </div>
-                <div className="cat-bg"><Icon name={cat.icon} /></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <Section id="experience" num="02" title="Experience">
-        <div className="timeline">
-          {experience.map((e) => <Job key={e.role + e.dates} e={e} />)}
-        </div>
-      </Section>
-
-      <Section id="projects" num="03" title="Projects">
+      <Section id="projects" num="01" title="Projects">
         <div className="grid">
           {projects.map((p) => <ProjectCard key={p.slug} p={p} />)}
         </div>
       </Section>
 
-      <Section id="achievements" num="04" title="Achievements">
-        {/*
-        <div className="achievements">
-          {achievements.map((a) => (
-            <div className="ach" key={a.title}>
-              <span className="ach-place">{a.place}</span>
-              <div>
-                <h3 className="ach-title">{a.title}</h3>
-                <p className="ach-line">{a.line}</p>
-              </div>
-              {a.date && <span className="ach-date">{a.date}</span>}
-            </div>
-          ))}
-        </div>
-        */}
-
-
+      <Section id="achievements" num="02" title="Achievements">
         <div className="medals">
           {achievements.map((a) => (
             <div className="medal" key={a.title}>
@@ -269,6 +225,35 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section id="experience" num="03" title="Experience">
+        <div className="timeline">
+          {experience.map((e) => <Job key={e.role + e.dates} e={e} />)}
+        </div>
+      </Section>
+
+      <Section id="skills" num="04" title="Skills">
+        <div className="terminal">
+          <div className="terminal-bar">
+            <span className="prompt">$</span>
+            <span className="terminal-path">ls ~/skills</span>
+          </div>
+          <div className="cats">
+            {categories.map((cat) => (
+              <div className="cat" key={cat.name} style={{ '--cc': cat.color }}>
+                <h3 className="cat-name"><Icon name={cat.icon} />{cat.name}</h3>
+                <div className="tags">
+                  {Object.entries(skills)
+                    .filter(([, s]) => s.category === cat.name)
+                    .map(([id]) => <Pill key={id} id={id} />)}
+                </div>
+                <div className="cat-bg"><Icon name={cat.icon} /></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* GitHub graph, turned off until there is more activity. Add it back as section 05.
       <Section id="github" num="05" title="GitHub">
         <div className="graph">
           <GitHubCalendar
@@ -283,6 +268,7 @@ export default function Home() {
           />
         </div>
       </Section>
+      */}
     </main>
   )
 }
