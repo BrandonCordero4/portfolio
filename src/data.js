@@ -14,7 +14,7 @@ export const skills = {
 // result, github, and live are optional: leave them '' and that part simply does not show.
 export const projects = [
   {
-    slug: 'project-one',
+    slug: 'project-uno',
     title: 'Project One',
     tagline: 'One sentence about what this project does.',
     skills: ['python', 'postgresql'],
