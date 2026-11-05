@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { GitHubCalendar } from 'react-github-calendar'
-import { skills, projects } from './data'
+import { skills, projects, achievements, highlights } from './data'
 import { Pill, Media } from './components'
 
 /* ============================================================
-   DATA. Skills and projects now live in data.js.
+   DATA. Skills, projects, and achievements now live in data.js.
    ============================================================ */
 
 // Your circle photo. Put the file in /public and set this to '/me.jpg'.
@@ -53,6 +53,10 @@ const icons = {
   server: <><rect x="2" y="2" width="20" height="8" rx="2" /><rect x="2" y="14" width="20" height="8" rx="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></>,
   database: <><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14a9 3 0 0 0 18 0V5" /><path d="M3 12a9 3 0 0 0 18 0" /></>,
   branch: <><line x1="6" y1="3" x2="6" y2="15" /><circle cx="18" cy="6" r="3" /><circle cx="6" cy="18" r="3" /><path d="M18 9a9 9 0 0 1-9 9" /></>,
+  robot: <><rect x="4" y="8" width="16" height="12" rx="2" /><line x1="12" y1="8" x2="12" y2="4" /><circle cx="12" cy="3" r="1" /><circle cx="9" cy="13" r="1" /><circle cx="15" cy="13" r="1" /><line x1="9" y1="17" x2="15" y2="17" /><line x1="2" y1="12" x2="2" y2="16" /><line x1="22" y1="12" x2="22" y2="16" /></>,
+  gamepad: <><rect x="2" y="7" width="20" height="11" rx="5" /><line x1="7" y1="10.5" x2="7" y2="14.5" /><line x1="5" y1="12.5" x2="9" y2="12.5" /><circle cx="15.5" cy="11.5" r="0.6" /><circle cx="18" cy="13.5" r="0.6" /></>,
+  snake: <><path d="M18 4H9a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H6" /><circle cx="18" cy="4" r="1.2" /></>,
+
 }
 
 function Icon({ name }) {
@@ -171,7 +175,7 @@ function ProjectCard({ p }) {
 }
 
 /* ============================================================
-   PAGE. Order is Skills, Experience, Projects, then GitHub.
+   PAGE. Order is Skills, Experience, Projects, Achievements, then GitHub.
    The header and footer live in App.jsx.
    ============================================================ */
 
@@ -192,6 +196,9 @@ export default function Home() {
           <p className="status"><span className="dot" />Seeking summer 2027 internships</p>
           <h1 className="hero-name">Brandon Cordero</h1>
           <p className="hero-line">Computer science student at Denison building websites and digital archives.</p>
+          <ul className="hero-facts">
+            {highlights.map((h) => <li key={h}>{h}</li>)}
+          </ul>
         </div>
         <div className="photo">
           {photo ? <img src={photo} alt="Brandon Cordero" /> : <span>BC</span>}
@@ -232,7 +239,37 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="github" num="04" title="GitHub">
+      <Section id="achievements" num="04" title="Achievements">
+        {/*
+        <div className="achievements">
+          {achievements.map((a) => (
+            <div className="ach" key={a.title}>
+              <span className="ach-place">{a.place}</span>
+              <div>
+                <h3 className="ach-title">{a.title}</h3>
+                <p className="ach-line">{a.line}</p>
+              </div>
+              {a.date && <span className="ach-date">{a.date}</span>}
+            </div>
+          ))}
+        </div>
+        */}
+
+
+        <div className="medals">
+          {achievements.map((a) => (
+            <div className="medal" key={a.title}>
+              <div className="medal-bg"><Icon name={a.icon} /></div>
+              <div className="medal-badge">{a.place}</div>
+              <h3 className="medal-title">{a.title}</h3>
+              <p className="medal-line">{a.line}</p>
+              {a.date && <span className="medal-date">{a.date}</span>}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="github" num="05" title="GitHub">
         <div className="graph">
           <GitHubCalendar
             username="BrandonCordero4"

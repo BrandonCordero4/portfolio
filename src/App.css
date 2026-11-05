@@ -390,3 +390,93 @@ a.contact-row:hover .contact-arrow { color: var(--accent); }
   width: min(100%, max(420px, calc((100vh - 100px) * 0.77)));
 }
 .resume-sheet img { display: block; width: 100%; height: auto; }
+
+
+
+/* ---------- Achievements ---------- */
+.achievements { background: var(--card); border: 1px solid var(--border); border-radius: 4px; }
+.ach {
+  display: grid; grid-template-columns: 90px 1fr auto; gap: 26px; align-items: center;
+  padding: 22px 26px; border-top: 1px solid var(--border);
+}
+.ach:first-child { border-top: 0; }
+.ach-place {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+  letter-spacing: 0.04em; color: var(--accent);
+}
+.ach-title { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 24px; }
+.ach-line { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+.ach-date {
+  font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  text-align: right; white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .ach { grid-template-columns: 60px 1fr; gap: 6px 16px; padding: 18px; }
+  .ach-date { grid-column: 2; text-align: left; }
+}
+
+
+/* ---------- Achievements, medal version ---------- */
+.medals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.medal {
+  background: var(--card); border: 1px solid var(--border);
+  border-top: 3px solid var(--accent); border-radius: 4px;
+  padding: 36px 26px 28px; text-align: center;
+  transition: transform 0.2s ease;
+}
+.medal:hover { transform: translateY(-3px); }
+.medal-badge {
+  width: 112px; aspect-ratio: 1; margin: 0 auto 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); border: 1px solid var(--border);
+  outline: 1px solid var(--accent); outline-offset: 8px;
+  font-family: var(--font-heading); font-size: 44px; color: var(--accent);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.medal:hover .medal-badge { background: var(--accent); color: #fff; }
+.medal-title { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.15; }
+.medal-line { margin: 10px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.medal-date {
+  display: block; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .medals { grid-template-columns: 1fr; }
+}
+
+
+/* ---------- Achievements: faded icons and aligned titles ---------- */
+.medal { position: relative; overflow: hidden; }
+.medal > :not(.medal-bg) { position: relative; z-index: 1; }
+.medal-bg {
+  position: absolute; right: -18px; bottom: -18px; width: 130px;
+  color: var(--accent); opacity: 0.08; pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.medal-bg svg { width: 100%; height: auto; }
+.medal:hover .medal-bg { opacity: 0.14; }
+
+/* Reserve two lines for the title so descriptions start at the same height */
+.medal-title {
+  min-height: calc(2 * 1.15em);
+  display: flex; align-items: center; justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .medal-title { min-height: 0; }
+}
+
+
+
+/* ---------- Hero facts line ---------- */
+.hero-facts {
+  display: flex; flex-wrap: wrap; gap: 6px 0;
+  margin: 24px 0 0; padding: 0; list-style: none;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.hero-facts li + li::before { content: '·'; margin: 0 12px; color: var(--accent); }

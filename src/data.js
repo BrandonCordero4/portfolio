@@ -53,3 +53,36 @@ export const projects = [
     live: '',
   },
 ]
+
+
+// One row per achievement. "place" is the big orange label on the left.
+// Leave date as '' to hide it.
+export const achievements = [
+  {
+    place: '1st',
+    title: 'Maze Navigation Competition',
+    line: 'Led design, build, and code of an autonomous robot with a manual override. Robotics Club.',
+    date: '',
+    icon: 'robot',
+  },
+  {
+    place: '1st',
+    title: 'Club Game Jam',
+    line: 'Built a Godot game in C# in 3 weeks and placed first of 5 teams. Coding Club.',
+    date: '',
+    icon: 'gamepad',
+  },
+  {
+    place: '1st',
+    title: 'DU Slither Competition',
+    line: 'Python snake bot built over 8 weeks beat 8 other bots and won a $100 Raspberry Pi.',
+    date: '',
+    icon: 'snake',  
+  },
+]
+
+// Short facts shown in one line under the hero tagline. Two is the sweet spot.
+export const highlights = [
+  'President, Robotics Club',
+  'Amateur MMA and BJJ fighter',
+]
