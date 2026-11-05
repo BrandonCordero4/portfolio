@@ -152,20 +152,68 @@ a { color: inherit; text-decoration: none; }
 }
 .card .pill { padding: 2px 7px; font-size: 10.5px; }                 /* smaller inside cards */
 
+
+
 /* ---------- Experience ---------- */
 .timeline { background: var(--card); border: 1px solid var(--border); border-radius: 4px; }
-.job {
-  display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 24px;
-  border-top: 1px solid var(--border);
-}
+.job { padding: 26px; border-top: 1px solid var(--border); }
 .job:first-child { border-top: 0; }
-.job-dates {
-  padding-top: 6px; font-family: var(--font-mono); font-size: 12px;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+.job-head { display: grid; grid-template-columns: 70px 1fr auto; gap: 26px; align-items: center; }
+
+.job-logo {
+  width: 70px; aspect-ratio: 1; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: #FBFAF6; border: 1px solid var(--border); border-radius: 2px;
+  font-family: var(--font-heading); font-size: 28px; color: var(--muted);
 }
-.job-role { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 24px; }
+.job-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+
+.job-role { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 26px; }
 .job-org { color: var(--muted); font-weight: 400; }
-.job-line { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.job-line { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+.job-dates {
+  font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  text-align: right; white-space: nowrap;
+}
+
+/* The little arrow after the description */
+.job-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; margin-left: 8px; vertical-align: middle; padding: 0;
+  border: 1px solid var(--border); border-radius: 2px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.job-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.job-toggle svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
+.job.open .job-toggle svg { transform: rotate(180deg); }
+
+/* Expanding area. Animating the grid row from 0fr to 1fr slides it open smoothly. */
+.job-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; }
+.job.open .job-more { grid-template-rows: 1fr; }
+.job-more-inner {
+  min-height: 0; overflow: hidden; padding-left: 96px;  /* 70 logo + 26 gap, lines up with the text */
+  visibility: hidden; transition: visibility 0s linear 0.25s;
+}
+.job.open .job-more-inner { visibility: visible; transition-delay: 0s; }
+
+.job-detail {
+  display: grid; grid-template-columns: 110px 1fr; gap: 16px;
+  padding: 14px 0; border-top: 1px solid var(--border);
+  font-size: 15px; line-height: 1.55;
+}
+.job-detail:first-child { margin-top: 20px; }
+.job-detail p { margin: 0; }
+.job-detail-label {
+  padding-top: 3px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.job-link { font-family: var(--font-heading); font-size: 18px; }
+.job-link:hover { color: var(--accent); }
+
+
+
 
 /* ---------- Skills terminal ---------- */
 .terminal { background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
@@ -216,7 +264,11 @@ a { color: inherit; text-decoration: none; }
   .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 56px; }
   .photo { order: -1; width: 160px; font-size: 44px; }
   .nav a:not(.btn) { display: none; }          /* only the Resume button on small screens */
-  .job { grid-template-columns: 1fr; gap: 4px; }
+  .job-head { grid-template-columns: 56px 1fr; gap: 6px 16px; }
+  .job-logo { width: 56px; }
+  .job-dates { grid-column: 2; text-align: left; }
+  .job-more-inner { padding-left: 0; }
+  .job-detail { grid-template-columns: 1fr; gap: 4px; }
   .cats { grid-template-columns: 1fr; }
   .cat, .cat:nth-child(-n+3) { grid-column: auto; }
 }
@@ -224,3 +276,117 @@ a { color: inherit; text-decoration: none; }
   .grid { grid-template-columns: 1fr; }
   .footer { flex-direction: column; gap: 6px; }
 }
+
+
+/* ---------- Contact page ---------- */
+.contact { padding: 72px 0 80px; }
+.contact-title {
+  margin: 0; font-family: var(--font-heading); font-weight: 500;
+  font-size: clamp(40px, 6vw, 64px); line-height: 1; letter-spacing: -0.025em;
+}
+.contact .hero-line { margin: 24px 0 48px; }
+
+.contact-row {
+  display: grid; grid-template-columns: 180px 1fr auto; gap: 24px; align-items: center;
+  padding: 24px; border-top: 1px solid var(--border);
+}
+.contact-row:first-child { border-top: 0; }
+a.contact-row:hover { background: #FBFAF6; }
+
+.contact-label {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.contact-value { font-family: var(--font-heading); font-size: 24px; overflow-wrap: anywhere; }
+a.contact-value:hover { color: var(--accent); }
+
+.contact-arrow { font-family: var(--font-mono); color: var(--muted); transition: color 0.2s ease; }
+a.contact-row:hover .contact-arrow { color: var(--accent); }
+
+.copy {
+  padding: 8px 14px; border-radius: 2px; cursor: pointer;
+  background: transparent; color: var(--text); border: 1px solid var(--rule);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.copy:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 800px) {
+  .contact-row { grid-template-columns: 1fr auto; gap: 6px 16px; }
+  .contact-label { grid-column: 1 / -1; }
+  .contact-value { font-size: 19px; }
+}
+
+
+
+/* ---------- Project page ---------- */
+.project { padding: 56px 0 80px; }
+.back {
+  display: inline-block; margin-bottom: 28px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.back:hover { color: var(--accent); }
+
+.project-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; }
+.project-top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; padding: 28px; }
+
+.project-media { aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--border); border-radius: 2px; }
+.project-dates {
+  display: block; margin-top: 12px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+
+.project-right { display: flex; flex-direction: column; }
+.project-title {
+  margin: 0 0 20px; font-family: var(--font-heading); font-weight: 500;
+  font-size: clamp(32px, 4vw, 44px); line-height: 1.05; letter-spacing: -0.02em;
+}
+.project-row { padding: 16px 0; border-top: 1px solid var(--border); }
+.project-label {
+  display: block; margin-bottom: 8px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.project-result { margin: 0; font-family: var(--font-heading); font-size: 20px; line-height: 1.35; }
+
+.project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 16px; }
+.project-links .btn { padding: 10px 18px; font-size: 12px; border: 1px solid var(--text); }
+.project-links .btn:not(.btn-ghost):hover { border-color: var(--accent); }
+.project-links .btn-ghost { background: transparent; color: var(--text); }
+.project-links .btn-ghost:hover { background: var(--text); color: var(--bg); }
+
+.project-desc {
+  margin: 0; padding: 24px 28px 28px; border-top: 1px solid var(--border);
+  font-size: 16px; line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  .project-top { grid-template-columns: 1fr; }
+}
+
+
+
+
+/* ---------- Resume page ---------- */
+.resume { padding: 40px 0 64px; }
+.resume-top {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 20px; margin-bottom: 24px;
+}
+.resume-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.resume-actions .btn { padding: 10px 18px; font-size: 12px; border: 1px solid var(--text); }
+.resume-actions .btn:not(.btn-ghost):hover { border-color: var(--accent); }
+.resume-actions .btn-ghost { background: transparent; color: var(--text); }
+.resume-actions .btn-ghost:hover { background: var(--text); color: var(--bg); }
+
+.resume-sheet {
+  display: block; margin: 0 auto; background: var(--card);
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  /* Width follows the window height so a full page fits on screen.
+     0.77 is the width to height ratio of a letter page. 240px is the space
+     taken by the header and title row. 420px is the smallest it will get. */
+  width: min(100%, max(420px, calc((100vh - 100px) * 0.77)));
+}
+.resume-sheet img { display: block; width: 100%; height: auto; }
