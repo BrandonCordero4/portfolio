@@ -10,7 +10,7 @@ import { Pill, Media } from './components'
 
 // Your circle photo. Put the file in /public and set this to '/me.jpg'.
 // Leave it empty to show the BC placeholder.
-const photo = ''
+const photo = '../public/linkedin.jpg'
 
 // The five skill categories. Each card gets its own accent color and icon.
 const categories = [
@@ -26,19 +26,39 @@ const categories = [
 // Every extra field is optional: leave it out and that slot simply does not show.
 const experience = [
   {
-    dates: '2026 to Present', role: 'Role Title', org: 'Organization', logo: '',
-    line: 'One sentence on what you did.',
-    did: 'One or two sentences on what you built or were responsible for.',
-    result: 'One plain sentence about the outcome.',
-    learned: 'One specific sentence about what you learned.',
-    skills: ['nodejs', 'docker'],
-    project: 'project-one',
+    dates: 'Oct 2026 to Present', role: 'Software Engineer Intern', org: 'BETTR Analytics', logo: '/linkedin.jpg',
+    line: 'Built an AI agent that writes daily social posts and a weekly newsletter.',
+    did: 'Built it on Node.js serverless functions, Firestore, and the Claude API, with live web search, schema validation, and an approval dashboard. I also build features for the prediction market terminal, working in a shared codebase with full time engineers.',
+    result: 'Nothing the agent writes gets published without human approval.',
+    learned: 'How to put guardrails around AI output so a person always has the final say.',
+    skills: ['nodejs', 'firestore', 'claudeapi'],
   },
   {
-    dates: '2025', role: 'Role Title', org: 'Organization', logo: '',
-    line: 'One sentence on what you did.',
-    did: 'One or two sentences on what you built or were responsible for.',
-    learned: 'One specific sentence about what you learned.',
+    dates: 'Aug 2026 to Present', role: 'Research Assistant', org: 'Denison University Library', logo: '/linkedin.jpg',
+    line: 'Automated catalog lookups for librarians working through their inventories.',
+    did: 'Built a Playwright scraper that verifies titles, counts holdings, and writes the results back to the spreadsheet. Deployed it as a web app so librarians can upload their own collections.',
+    result: 'Saves over 100 hours of work every year.',
+    learned: 'How to turn a one off script into a tool that non programmers can use.',
+    skills: ['playwright'],
+    project: 'library-scraper',
+  },
+  {
+    dates: 'May to Jul 2026', role: 'Web Development Intern', org: 'Eugenics Ghost Project', logo: '/linkedin.jpg',
+    line: 'Built and launched a custom digital archive from scratch.',
+    did: 'Wrote a custom Omeka S theme and the HTML content blocks. Containerized the stack with Docker Compose and deployed it to a Raspberry Pi 5.',
+    result: 'The archive is live at a custom domain with no port forwarding or static IP.',
+    learned: 'How to host a site safely from home hardware using a Cloudflare Tunnel.',
+    skills: ['omekas', 'docker', 'cloudflare', 'raspberrypi'],
+    project: 'eugenics-ghost-project',
+  },
+  {
+    dates: 'Sep 2025 to Present', role: 'President', org: 'Robotics Club', logo: '/linkedin.jpg',
+    line: 'Lead the club and its biggest builds.',
+    did: 'Leading the build of a chess playing robot. Earlier I led the design, construction, and programming of a competition robot with autonomous navigation and a manual override.',
+    result: 'The competition robot placed 1st overall in the maze navigation competition.',
+    learned: 'How to keep a team of builders moving on one project at the same time.',
+    skills: ['cpp', 'raspberrypi', 'arduino'],
+    project: 'chess-robot',
   },
 ]
 
