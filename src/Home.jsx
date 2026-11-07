@@ -26,7 +26,7 @@ const categories = [
 // Every extra field is optional: leave it out and that slot simply does not show.
 const experience = [
   {
-    dates: 'Oct 2026 to Present', role: 'Software Engineer Intern', org: 'BETTR Analytics', logo: '/linkedin.jpg',
+    dates: 'Oct 2026 to Present', role: 'Software Engineer Intern', org: 'BETTR Analytics', logo: '/bettr-logo.jpg',
     line: 'Built an AI agent that writes daily social posts and a weekly newsletter.',
     did: 'Built it on Node.js serverless functions, Firestore, and the Claude API, with live web search, schema validation, and an approval dashboard. I also build features for the prediction market terminal, working in a shared codebase with full time engineers.',
     result: 'Nothing the agent writes gets published without human approval.',
@@ -34,7 +34,7 @@ const experience = [
     skills: ['nodejs', 'firestore', 'claudeapi'],
   },
   {
-    dates: 'Aug 2026 to Present', role: 'Research Assistant', org: 'Denison University Library', logo: '/linkedin.jpg',
+    dates: 'Aug 2026 to Present', role: 'Research Assistant', org: 'Denison University Library', logo: '/denison-seal.png',
     line: 'Automated catalog lookups for librarians working through their inventories.',
     did: 'Built a Playwright scraper that verifies titles, counts holdings, and writes the results back to the spreadsheet. Deployed it as a web app so librarians can upload their own collections.',
     result: 'Saves over 100 hours of work every year.',
@@ -43,7 +43,7 @@ const experience = [
     project: 'library-scraper',
   },
   {
-    dates: 'May to Jul 2026', role: 'Web Development Intern', org: 'Eugenics Ghost Project', logo: '/linkedin.jpg',
+    dates: 'May to Jul 2026', role: 'Web Development Intern', org: 'Eugenics Ghost Project', logo: '/eugenic-ghosts-spooky.png',
     line: 'Built and launched a custom digital archive from scratch.',
     did: 'Wrote a custom Omeka S theme and the HTML content blocks. Containerized the stack with Docker Compose and deployed it to a Raspberry Pi 5.',
     result: 'The archive is live at a custom domain with no port forwarding or static IP.',
@@ -52,7 +52,7 @@ const experience = [
     project: 'eugenics-ghost-project',
   },
   {
-    dates: 'Sep 2025 to Present', role: 'President', org: 'Robotics Club', logo: '/linkedin.jpg',
+    dates: 'Sep 2025 to Present', role: 'President', org: 'Robotics Club', logo: '/robotics-logo.png',
     line: 'Lead the club and its biggest builds.',
     did: 'Leading the build of a chess playing robot. Earlier I led the design, construction, and programming of a competition robot with autonomous navigation and a manual override.',
     result: 'The competition robot placed 1st overall in the maze navigation competition.',
