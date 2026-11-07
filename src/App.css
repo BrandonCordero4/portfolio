@@ -10,7 +10,7 @@
   --border: #E2DED3;    /* card borders and soft lines inside cards */
   --rule: #BDB9AD;      /* section dividers, header and footer lines */
   --grid: #CFCBC0;      /* background grid lines */
-  --accent: #E0431B;    /* the hint of reddish orange */
+  --accent:  #E0431B;    /* the hint of reddish orange */
   --font-heading: 'Newsreader', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -122,7 +122,7 @@ width: 400px; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
 .card:hover { transform: translateY(-2px); }
 
 /* Fixed 4 by 3 frame. overflow hidden keeps the zoom inside it. */
-.card-media { aspect-ratio: 4 / 3; overflow: hidden; border-bottom: 1px solid var(--border); }
+.card-media { aspect-ratio: 4 / 3; overflow: hidden; margin: 12px 12px 0; border: 1px solid #1A1814; border-radius: 3px; }
 .media { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
 .card:hover .media { transform: scale(1.03); }
 .placeholder {
@@ -331,7 +331,7 @@ a.contact-row:hover .contact-arrow { color: var(--accent); }
 .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; }
 .project-top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; padding: 28px; }
 
-.project-media { aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--border); border-radius: 2px; }
+.project-media { aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid #1A1814; border-radius: 3px; }
 .project-dates {
   display: block; margin-top: 12px;
   font-family: var(--font-mono); font-size: 12px;
@@ -483,4 +483,66 @@ a.contact-row:hover .contact-arrow { color: var(--accent); }
 
 
 /* ---------- Front page scale. 10% smaller, margins included. ---------- */
-#top { zoom: 1; max-width: var(--max-width); margin: 0 auto; } 
+#top { zoom: .9; max-width: var(--max-width); margin: 0 auto; }
+
+/* For logos to fit where they are suppose to*/
+.job-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+
+
+
+/* ---------- Experience logos, no box ---------- */
+.job-head { grid-template-columns: 96px 1fr auto; }
+.job-logo {
+  width: 96px; height: 96px;
+  background: none; border: 0; border-radius: 0;
+  font-size: 38px;
+}
+.job-logo img { width: auto; height: auto; max-width: 100%; max-height: 100%; padding: 0; }
+.job-more-inner { padding-left: 122px; }
+
+/* Whole experience row opens the dropdown */
+.job-head.clickable { cursor: pointer; }
+.job-head.clickable:hover .job-toggle { color: var(--accent); border-color: var(--accent); }
+
+
+/* ---------- Competitions ledger ---------- */
+.ledger { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.ledger-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 -1px -1px 0; }
+.cell {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.cell-host {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.cell-rank { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+.cell-place { font-family: var(--font-heading); font-size: 48px; line-height: 1; color: var(--text); }
+.cell-of {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.cell-title { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 22px; }
+.cell-title::before {
+  content: ''; display: block; width: 28px; height: 2px;
+  background: var(--accent); margin-bottom: 14px;
+}
+.cell-line { margin: 0; font-size: 15px; line-height: 1.5; color: var(--muted); }
+.cell .tags { margin-top: auto; padding-top: 6px; }
+@media (max-width: 860px) {
+  .ledger-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ---------- Quote under the hero ---------- */
+.quote {
+  margin: 0 auto; max-width: 640px; text-align: center;
+  font-family: var(--font-heading); font-size: 26px; line-height: 1.4; color: var(--text);
+}
+.quote cite {
+  display: block; margin-top: 16px; font-style: normal;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.quote cite::before { content: '— '; }

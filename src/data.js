@@ -70,30 +70,36 @@ export const projects = [
   },
 ]
 
-
-// One row per achievement. "place" is the big orange label on the left.
-// Leave date as '' to hide it.
+// One entry per competition.
+// "place" is the big result like '1st' or '3rd'. "of" is the field size like '9 bots'.
+// "host" is who ran it. Leave any of "of", "host", "date", or "skills" empty to hide it.
 export const achievements = [
   {
     place: '1st',
+    of: '',
+    host: 'Robotics Club',
+    date: '',
     title: 'Maze Navigation Competition',
-    line: 'Led design, build, and code of an autonomous robot with a manual override. Robotics Club.',
-    date: '',
-    icon: 'robot',
+    line: 'Led design, build, and code of an autonomous robot with a manual override.',
+    skills: [],
   },
   {
     place: '1st',
+    of: '5 teams',
+    host: 'Coding Club',
+    date: '',
     title: 'Club Game Jam',
-    line: 'Built a Godot game in C# in 3 weeks and placed first of 5 teams. Coding Club.',
-    date: '',
-    icon: 'gamepad',
+    line: 'Built a Godot game in C# in 3 weeks.',
+    skills: ['godot', 'csharp'],
   },
   {
     place: '1st',
-    title: 'DU Slither Competition',
-    line: 'Python snake bot built over 8 weeks beat 8 other bots and won a $100 Raspberry Pi.',
+    of: '9 bots',
+    host: 'Coding Club',
     date: '',
-    icon: 'snake',
+    title: 'DU Slither Competition',
+    line: 'Python snake bot built over 8 weeks. Won a $100 Raspberry Pi.',
+    skills: ['python'],
   },
 ]
 

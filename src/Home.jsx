@@ -10,7 +10,7 @@ import { Pill, Media } from './components'
 
 // Your circle photo. Put the file in /public and set this to '/me.jpg'.
 // Leave it empty to show the BC placeholder.
-const photo = '../public/linkedin.jpg'
+const photo = '/linkedin.jpg'
 
 // The five skill categories. Each card gets its own accent color and icon.
 const categories = [
@@ -107,7 +107,10 @@ function Job({ e }) {
 
   return (
     <div className={`job${open ? ' open' : ''}`}>
-      <div className="job-head">
+      <div
+        className={`job-head${hasMore ? ' clickable' : ''}`}
+        onClick={hasMore ? () => setOpen(!open) : undefined}
+      >  
         <div className="job-logo">
           {e.logo ? <img src={e.logo} alt={e.org} /> : <span>{e.org[0]}</span>}
         </div>
@@ -118,7 +121,6 @@ function Job({ e }) {
             {hasMore && (
               <button
                 className="job-toggle"
-                onClick={() => setOpen(!open)}
                 aria-expanded={open}
                 aria-label={open ? 'Show less' : 'Show more'}
               >
@@ -215,15 +217,23 @@ export default function Home() {
         <div className="hero-text">
           <p className="status"><span className="dot" />Seeking summer 2027 internships</p>
           <h1 className="hero-name">Brandon Cordero</h1>
-          <p className="hero-line">Computer science student at Denison building websites and digital archives.</p>
+          <p className="hero-line">Studying computer science at Denison University with a minor in mathematics.</p>
           <ul className="hero-facts">
             {highlights.map((h) => <li key={h}>{h}</li>)}
           </ul>
+
         </div>
         <div className="photo">
           {photo ? <img src={photo} alt="Brandon Cordero" /> : <span>BC</span>}
         </div>
       </section>
+
+      <blockquote className="quote">
+        “Faith is the bird that feels the light and sings when the dawn is still dark.”
+        <cite>Rabindranath Tagore</cite>
+      </blockquote>
+
+
 
       <Section id="projects" num="01" title="Projects">
         <div className="grid">
@@ -231,17 +241,26 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="achievements" num="02" title="Achievements">
-        <div className="medals">
-          {achievements.map((a) => (
-            <div className="medal" key={a.title}>
-              <div className="medal-bg"><Icon name={a.icon} /></div>
-              <div className="medal-badge">{a.place}</div>
-              <h3 className="medal-title">{a.title}</h3>
-              <p className="medal-line">{a.line}</p>
-              {a.date && <span className="medal-date">{a.date}</span>}
-            </div>
-          ))}
+      <Section id="achievements" num="02" title="Competitions">
+        <div className="ledger">
+          <div className="ledger-grid">
+            {achievements.map((a) => (
+              <div className="cell" key={a.title}>
+                <span className="cell-host">{[a.host, a.date].filter(Boolean).join(' · ')}</span>
+                <div className="cell-rank">
+                  <span className="cell-place">{a.place}</span>
+                  {a.of && <span className="cell-of">of {a.of}</span>}
+                </div>
+                <h3 className="cell-title">{a.title}</h3>
+                <p className="cell-line">{a.line}</p>
+                {a.skills?.length > 0 && (
+                  <div className="tags">
+                    {a.skills.map((id) => <Pill key={id} id={id} />)}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
