@@ -23,6 +23,7 @@ export const skills = {
   godot: { name: 'Godot', category: 'DevOps and Tools', color: '#478CBF' },
   playwright: { name: 'Playwright', category: 'DevOps and Tools', color: '#2EAD33' },
   cli: { name: 'CLI', category: 'DevOps and Tools', color: '#6B675F' },
+  flask: { name: 'Flask', category: 'Backend', color: '#3B3B3B' },
 }
 
 // image and video can both stay empty (gray placeholder).
@@ -39,8 +40,8 @@ export const projects = [
     dates: 'May to Jul 2026',
     result: 'Published at a custom domain with no port forwarding or static IP.',
     description: 'A digital archive built on Omeka S. I wrote the custom theme and the HTML content blocks from scratch. I containerized the stack with Docker Compose (PHP, Apache, and MariaDB) and deployed it to a Raspberry Pi 5. A Cloudflare Tunnel and a DNS migration serve it at its own domain.',
-    github: '',
-    live: '',
+    github: 'https://github.com/BrandonCordero4/EugenicGhostsWebsite',
+    live: 'https://www.eugenicghosts.org/s/egp_main/page/home',
   },
   {
     slug: 'chess-robot',
@@ -59,14 +60,14 @@ export const projects = [
     slug: 'library-scraper',
     title: 'Library Catalog Scraper',
     tagline: 'Automates catalog lookups for librarians working through collections.',
-    skills: ['playwright'],
-    image: '/linkedin.jpg',
+    skills: ['playwright', 'python', 'flask'],
+    image: '/newLibAutoProject.png',
     video: '',
     dates: 'Aug 2026 to Present',
     result: 'Saves over 100 hours of work every year.',
-    description: 'A Playwright scraper that reads a librarian\'s Excel inventory, looks up each title in the catalog, counts holdings, and writes the results back into the spreadsheet. I deployed it as a web app where librarians upload a collection and get the results back. It speeds up the weeding process at the Denison University Library.',
-    github: '',
-    live: '',
+    description: 'Librarians decide which books to remove from a collection by checking every title in the catalog by hand, so I built a web app that does it for them. They upload an Excel inventory and pick a row range. Playwright finds each title, confirms it is the right book, counts how many other schools hold it, and flags ebooks. Most of the library staff now use it twice a year.',
+    github: 'https://github.com/BrandonCordero4/library_automation_project',
+    live: 'https://librarypi.tailefd17f.ts.net/',
   },
 ]
 
